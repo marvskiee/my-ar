@@ -10,6 +10,22 @@
 </head>
   </head>
   <body style="margin: 0; overflow: hidden">
+    <button onclick="requestCameraAccess()">Allow Camera Access</button>
+
+  <script>
+    function requestCameraAccess() {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+          // Camera access granted
+          // You can do further operations here, like displaying the camera stream
+          console.log('Camera access granted');
+        })
+        .catch(function(error) {
+          // Handle error, e.g., permissions denied by the user
+          console.error('Error accessing camera:', error);
+        });
+    }
+  </script>
     <script src="script.js"></script>
   </body>
 </html>
