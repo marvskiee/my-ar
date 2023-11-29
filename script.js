@@ -34,15 +34,34 @@ const ArMarkerControls = new THREEx.ArMarkerControls(ArToolkitContext, camera, {
   changeMatrixMode: 'cameraTransformMatrix'
 });
 
-const loader = new THREE.GLTFLoader();
-const url = 'apple.glb'; // Replace with the path to your 3D model
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Soft white light
+scene.add(ambientLight);
+// Create an MTLLoader instance
+const mtlLoader = new THREE.MTLLoader();
 
-let model;
+// Load the material file
+mtlLoader.load('OBJ.mtl', (materials) => {
+  materials.preload(); // Preload materials for OBJLoader to use
 
-loader.load(url, (gltf) => {
-  model = gltf.scene;
-  model.scale.set(0.005, 0.005, 0.005);
-  scene.add(model);
+  // Create an OBJLoader instance
+  const objLoader = new THREE.OBJLoader();
+  console.log(materials)
+  // Set loaded materials to OBJLoader
+  objLoader.setMaterials(materials);
+
+  // Load the object file (OBJ)
+ 
+  objLoader.load('OBJ.obj', (object) => {
+    // Manipulate the loaded object if needed
+    object.scale.set(0.5, 0.5, 0.5);
+    object.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
+        // child.material = new THREE.MeshBasicMaterial({ color: 0x365452 }); // Set a temporary white material
+      }
+    });
+    // Add the object to your scene
+    scene.add(object);
+  });
 });
 
 // const geometry = new THREE.BoxGeometry(1, 1, 1);
