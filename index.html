@@ -3,28 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AR</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.2.0/aframe.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.min.js"></script>
-  </head>
-</head>
+    <title>AR with AR.js and A-Frame</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.js"></script>
+    <style>
+      /* Hide the VR icon */
+      .a-enter-vr-button {
+        display: none !important;
+      }
+    </style>
   </head>
   <body style="margin: 0; overflow: hidden">
-    <button onclick="requestCameraAccess()">Allow Camera Access</button>
-  <script>
-    function requestCameraAccess() {
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function(stream) {
-          // Camera access granted
-          // You can do further operations here, like displaying the camera stream
-          console.log('Camera access granted');
-        })
-        .catch(function(error) {
-          // Handle error, e.g., permissions denied by the user
-          console.error('Error accessing camera:', error);
-        });
-    }
-  </script>
-    <script src="script.js"></script>
+    <a-scene embedded arjs="sourceType: webcam;debugUIEnabled: false;detectionMode: mono;">
+      <!-- Apple  -->
+      <a-marker
+        preset="custom"
+        type="pattern"
+        url="/php/pattern/pattern-a.patt"
+      >
+        <a-entity
+          obj-model="obj: url(obj/apple.obj); mtl: url(mtl/apple.mtl)"
+          scale="0.5 0.5 0.5"
+          position="0 0 0"
+        ></a-entity>
+      </a-marker>
+      <!-- Cat  -->
+      <a-marker
+        preset="custom"
+        type="pattern"
+        url="/php/pattern/pattern-c.patt"
+      >
+        <a-entity
+          obj-model="obj: url(obj/cat.obj); mtl: url(mtl/cat.mtl)"
+          scale="0.08 0.08 0.08"
+          position="0 0 0"
+          rotation="-90 0 0"
+        ></a-entity>
+      </a-marker>
+      <!-- Duck  -->
+      <a-marker
+        preset="custom"
+        type="pattern"
+        url="/php/pattern/pattern-d.patt"
+      >
+        <a-entity
+          obj-model="obj: url(obj/duck.obj); mtl: url(mtl/duck.mtl)"
+          scale="0.08 0.08 0.08"
+          position="0 0 0"
+          rotation="-90 0 0"
+        ></a-entity>
+      </a-marker>
+
+      <!-- Add more markers with corresponding AR content -->
+      <!--
+    <a-marker preset="custom" type="pattern" url="path/to/pattern2.patt">
+      <a-entity
+        obj-model="obj: url(path/to/OBJ2.obj); mtl: url(path/to/OBJ2.mtl)"
+        scale="0.7 0.7 0.7"
+        position="1 0 0"
+      ></a-entity>
+    </a-marker>
+    -->
+
+      <a-entity camera></a-entity>
+    </a-scene>
   </body>
 </html>
