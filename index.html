@@ -8,7 +8,8 @@
     />
     <title>AR with AR.js and A-Frame</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
     <style>
       /* Hide the VR icon */
       .a-enter-vr-button {
@@ -28,6 +29,7 @@
           obj-model="obj: url(obj/apple.obj); mtl: url(mtl/apple.mtl)"
           scale="0.5 0.5 0.5"
           position="0 0 0"
+          soun
         ></a-entity>
       </a-marker>
 
@@ -43,7 +45,6 @@
       </a-marker>
 
       <!-- Cat  -->
-
       <a-marker preset="custom" type="pattern" url="pattern/pattern-c.patt">
         <a-entity
           obj-model="obj: url(obj/cat.obj); mtl: url(mtl/cat.mtl)"
@@ -79,7 +80,7 @@
 
       <a-marker preset="custom" type="pattern" url="pattern/pattern-f.patt">
         <a-entity
-          obj-model="obj: url(obj/12265_Fish_v1_L2.obj); mtl: url(mtl/fish.mtl)"
+          obj-model="obj: url(obj/fish.obj); mtl: url(mtl/fish.mtl)"
           scale="0.08 0.08 0.08"
           position="0 0 0"
           rotation="-90 0 0"
@@ -101,7 +102,7 @@
 
       <a-marker preset="custom" type="pattern" url="pattern/pattern-h.patt">
         <a-entity
-          obj-model="obj: url(obj/10026_Horse_v01-it2.obj); mtl: url(mtl/10026_Horse_v01-it2.mtl)"
+          obj-model="obj: url(obj/horse.obj); mtl: url(mtl/10026_Horse_v01-it2.mtl)"
           scale=".002 .002 .002"
           position="0 0 0"
           rotation="-90 0 0"
@@ -112,7 +113,7 @@
 
       <a-marker preset="custom" type="pattern" url="pattern/pattern-i.patt">
         <a-entity
-          obj-model="obj: url(obj/10861 Ice Cream_v1_LOD1.obj); mtl: url(mtl/10861 Ice Cream_v1_LOD1.mtl)"
+          obj-model="obj: url(obj/ice cream.obj); mtl: url(mtl/10861 Ice Cream_v1_LOD1.mtl)"
           scale=".2 .2 .2"
           position="0 1 0"
           rotation="-90 0 0"
@@ -187,7 +188,7 @@
       <!-- peach -->
       <a-marker preset="custom" type="pattern" url="pattern/pattern-p.patt">
         <a-entity
-          obj-model="obj: url(obj/10196_Peach.obj); mtl: url(mtl/10196_Peach.mtl)"
+          obj-model="obj: url(obj/peach.obj); mtl: url(mtl/10196_Peach.mtl)"
           scale=".2 .2 .2"
           position="0 1 0"
           rotation="-90 0 0"
@@ -224,11 +225,9 @@
           position="0 2 0"
           rotation="90 0 0"
           material="color: yellow; metalness: 0.5; roughness: 0.8"
-
         ></a-entity>
       </a-marker>
 
-     
       <!-- tank -->
 
       <a-marker preset="custom" type="pattern" url="pattern/pattern-t.patt">
@@ -277,7 +276,7 @@
 
       <a-marker preset="custom" type="pattern" url="pattern/pattern-x.patt">
         <a-entity
-          obj-model="obj: url(obj/x.obj);"
+          obj-model="obj: url(obj/xylophone.obj);"
           scale="0.02 0.02 0.02"
           position="0 0 0"
           rotation="-90 0 0"
@@ -289,7 +288,7 @@
 
       <a-marker preset="custom" type="pattern" url="pattern/pattern-y.patt">
         <a-entity
-          obj-model="obj: url(obj/Fantasy yatch.obj); mtl: url(mtl/Fantasy_yatch.mtl)"
+          obj-model="obj: url(obj/yatch.obj); mtl: url(mtl/Fantasy_yatch.mtl)"
           scale=".01 .01 .01"
           position="0 1 0"
           rotation="0 0 0"
@@ -420,5 +419,9 @@
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
+    <audio id="myAudio" src="sounds/Apple.mp3"></audio>
+    <button id="btn_play" style="display: block">Play Sound</button>
+
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
