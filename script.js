@@ -11,7 +11,7 @@ markers.forEach(element => {
 
 const clickFunction = (element) => {
     const asset = element.querySelector("a-entity").getAttribute("obj-model").obj.replace("obj/", '').replace(".obj", "");
-    audio.src = "/sounds/" + asset + ".mp3"
+    audio.src = "sounds/" + asset + ".mp3"
     console.log("Found: ", asset)
     btn_play.click()
 }
