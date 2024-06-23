@@ -15,16 +15,44 @@
       .a-enter-vr-button {
         display: none !important;
       }
+      /* Overlay text */
+      #overlay {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        display: none;
+        margin: 1rem;
+        display: none;
+        font-family: sans-serif;
+        border-radius: 5px;
+        z-index: 10;
+      }
+      #overlay p {
+        text-align: center;
+        font-size: 1rem;
+        margin: 0;
+        border-radius: 1rem;
+        background: white;
+        padding: 1rem 1.5rem;
+      }
     </style>
   </head>
   <body style="margin: 0; overflow: hidden">
+    <div id="overlay">
+      <p style="text-transform: capitalize">Pattern detected!</p>
+    </div>
     <a-scene
       embedded
       arjs="sourceType: webcam;debugUIEnabled: false;detectionMode: mono;"
     >
       <!-- Apple  -->
 
-      <a-marker preset="custom" type="pattern" url="pattern/pattern-a.patt">
+      <a-marker
+        preset="custom"
+        type="pattern"
+        url="pattern/pattern-a.patt"
+        id="markerA"
+      >
         <a-entity
           obj-model="obj: url(obj/apple.obj); mtl: url(mtl/apple.mtl)"
           scale="0.5 0.5 0.5"
@@ -421,7 +449,6 @@
     </a-scene>
     <audio id="myAudio" src="sounds/Apple.mp3"></audio>
     <button id="btn_play" style="display: block">Play Sound</button>
-
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
