@@ -28,7 +28,7 @@ const clickFunction = (element) => {
     try {
         const pattern = Number(asset)
         console.log(pattern)
-        if (typeof pattern < 10)
+        if (pattern < 10)
             overlay_p.innerText = "Number: " + asset;
         else
             overlay_p.innerText = "Letter: " + asset[0] + " for " + asset;
